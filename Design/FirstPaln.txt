@@ -28,7 +28,7 @@ the algorithm and saves the data (3 dicts that coantins the probability)
 - E - The model Gets new data and calculate accorifing the train the missing labels (e.g = isSpam?)
 -  the output - table (list of obj) that conatins the original table 
 with the additional label (e.g = isSpam?)
-- Manager orchectrucur
+- Manager orchestructor
 
 =============================
 Classes and Interfaces :
@@ -77,4 +77,12 @@ class Program.cs
 	- handels errors and exceptions
 	- crate the mdoel trainer and give the run for the righ orchestructor
 	-
-	
+
+
+
+Main Flow:
+	- Gets path one or two , for input and (output optional) and this sets the mode!
+	- Load and parse (diffenet implementation for each mode)
+	- send to the trainer the raw data
+	- create object with the trained statitic model
+	- classificate the line and sends it (for file or console)
