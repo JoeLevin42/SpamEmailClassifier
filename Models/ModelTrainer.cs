@@ -1,4 +1,5 @@
 using SpamEmailClassifier.Models;
+using SpamEmailClassifier.Datarecord;
 using System.Data;
 using System.Linq;
 
@@ -7,7 +8,7 @@ namespace SpamEmailClassifier.Models
 {
     class ModelTrainer
     {
-        public NaiveBayesModel Train(List<IDataRecord> rows, string targetColumn)
+        public NaiveBayesModel Train(List<IDataRecords> rows, string targetColumn)
         {
             NaiveBayesModel model = new NaiveBayesModel();
 
@@ -41,7 +42,7 @@ namespace SpamEmailClassifier.Models
 
             foreach (string label in labels)
             {
-                List<IDataRecord> labelRows = rows
+                List<IDataRecords> labelRows = rows
                     .Where(row => row.GetLabel() == label)
                     .ToList();
 

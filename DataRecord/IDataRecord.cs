@@ -1,6 +1,6 @@
 ﻿namespace SpamEmailClassifier.Datarecord;
 
-public interface IDataRecord
+public interface IDataRecords
 {
     string GetLabel();
 
