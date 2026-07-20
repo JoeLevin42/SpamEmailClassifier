@@ -86,3 +86,14 @@ Main Flow:
 	- send to the trainer the raw data
 	- create object with the trained statitic model
 	- classificate the line and sends it (for file or console)
+
+
+Team Work Division:
+	CSVLoader - Yoni
+	Program - Yoni
+	DataRecord - Yoni
+	NaiveBase -- Yoni
+	ModelTrainer -- Yoel
+	Classifier -- Yoel
+	InteractiveModeRunner -- Yoel
+	BatchRunner -- Yoel
