@@ -47,7 +47,7 @@ class ModelTrainer:
 	- gets collection of DataRecord obj and calculate according the algorithm the statistics 
 	returns obj of the trained model (NaiveBaseModel)
 
-class NaiveBaseModel:
+class NaiveBayesModel:
 	-box that conatins the statistics for the three main dictionaries
 	1. dict of the previus probability - (The simple statiscs , how may failed , how many successed)
 	2. dict of the conditional probability - ()
@@ -87,13 +87,20 @@ Main Flow:
 	- create object with the trained statitic model
 	- classificate the line and sends it (for file or console)
 
+=============
+Dependencies:
+
+Manager -> IDataHandelr <- CSVLoader
+
+
+
 
 Team Work Division:
 	CSVLoader - Yoni
 	Program - Yoni
 	DataRecord - Yoni
-	NaiveBase -- Yoni
+	NaiveBase -- Yoel
 	ModelTrainer -- Yoel
 	Classifier -- Yoel
-	InteractiveModeRunner -- Yoel
-	BatchRunner -- Yoel
+	InteractiveModeRunner -- Yoni
+	BatchRunner -- Yoni

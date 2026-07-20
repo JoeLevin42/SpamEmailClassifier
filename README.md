@@ -45,6 +45,7 @@ with the additional label (e.g = isSpam?)
 
 ### class ModelTrainer:
 	- gets collection of DataRecord obj and calculate according the algorithm the statistics 
+	- Then need to calculate the total file (all lines) for the requerid labels
 	returns obj of the trained model (NaiveBaseModel)
 
 ### class NaiveBaseModel:
@@ -92,10 +93,10 @@ with the additional label (e.g = isSpam?)
 	CSVLoader - Yoni
 	Program - Yoni
 	DataRecord - Yoni
-	NaiveBase -- Yoni
+	NaiveBayesModel -- Yoel
 	ModelTrainer -- Yoel
-	Classifier -- Yoel
-	InteractiveModeRunner -- Yoel
+	Classifier -- Yoni
+	InteractiveModeRunner -- Yoni
 	BatchRunner -- Yoel
 
 =============================
