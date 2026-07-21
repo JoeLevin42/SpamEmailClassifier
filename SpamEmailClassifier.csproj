@@ -38,9 +38,6 @@
     <None Update="DataFiles\InputFiles\TrainInput\Play_Tennis_Train.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="output\predictions.csv">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 
 </Project>

@@ -39,13 +39,15 @@ namespace SpamEmailClassifier.Models
 
             Dictionary<string, double> unseen = new Dictionary<string, double>();
 
-
+            
+            int counter = 0;
             foreach (string label in labels)
-            {
+            {   
+                
                 List<IDataRecords> labelRows = rows
                     .Where(row => row.GetLabel() == label)
                     .ToList();
-
+                
 
                 foreach (string feature in rows[0].GetFeatures().Keys)
                 {
@@ -54,13 +56,14 @@ namespace SpamEmailClassifier.Models
                         .Select(row => row.GetFeatures()[feature])
                         .Distinct()
                         .Count();
-
-
+                    
+                    
                     // Calculate conditional probabilities
                     foreach (string value in rows
                         .Select(row => row.GetFeatures()[feature])
                         .Distinct())
                     {
+                        
                         int match = labelRows.Count(row =>
                             row.GetFeatures()[feature] == value);
 
@@ -95,7 +98,7 @@ namespace SpamEmailClassifier.Models
             model.ConditionalProbabilities = cond;
             model.UnseenProbabilities = unseen;
 
-
+            Console.WriteLine($"Model trained on {rows.Count} rows");
             return model;
         }
     }
