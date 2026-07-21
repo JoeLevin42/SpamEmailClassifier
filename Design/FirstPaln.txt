@@ -99,7 +99,7 @@ Team Work Division:
 	CSVLoader - Yoni
 	Program - Yoni
 	DataRecord - Yoni
-	NaiveBase -- Yoel
+	NaiveBayse -- Yoel
 	ModelTrainer -- Yoel
 	Classifier -- Yoel
 	InteractiveModeRunner -- Yoni

@@ -15,7 +15,7 @@ namespace SpamEmailClassifier.Models
             int n = rows.Count;
 
             // This is retunrs all the distinct label
-            // (e.g "SPAM" , "EMAIL", "SPAM" -> return onlu "SPAM", EMAIL")
+            // (e.g "SPAM" , "EMAIL", "SPAM" -> return only "SPAM", EMAIL")
             List<string> labels = rows
               .Select(row => row.GetLabel())
               .Distinct()
@@ -65,13 +65,11 @@ namespace SpamEmailClassifier.Models
                             row.GetFeatures()[feature] == value);
 
 
-                        double probability =
-                            (double)(match + 1) /
-                            (labelRows.Count + distinct);
+                        double probability = (double)(match + 1) / (labelRows.Count + distinct);
 
 
-                        string key =
-                            label + "_" + feature + "_" + value;
+
+                        string key = label + "_" + feature + "_" + value;
 
 
                         cond[key] = probability;
@@ -79,8 +77,7 @@ namespace SpamEmailClassifier.Models
 
 
                     // Calculate probability for unseen values
-                    string unseenKey =
-                        label + "_" + feature;
+                    string unseenKey = label + "_" + feature;
 
 
                     double unseenProbability =
