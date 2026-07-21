@@ -6,10 +6,19 @@ public class CSVReader : IReadData
 {
     public List<IDataRecords> Readfile(string path)
     {
-        string[] lines = File.ReadAllLines(path);
-        List<IDataRecords> parsedData = ParsedData(lines);
-        return parsedData;
-    }
+        try
+        {
+            string[] lines = File.ReadAllLines(path);
+            List<IDataRecords> parsedData = ParsedData(lines);
+            return parsedData;
+        }
+        catch (FileNotFoundException ex)
+        {
+            Console.WriteLine($"Error : {ex.Message}");
+            throw ex;
+        }
+        }
+   
 
     public List<IDataRecords> ParsedData(string[] lines)
     {

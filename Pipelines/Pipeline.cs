@@ -30,45 +30,59 @@ namespace SpamEmailClassifier.Pipelines
 
         public void Run()
         {
-            List<string> result = new List<string>();
-            string[] headers = _dataTrain[0].GetHeaders();
-
-            foreach (string header in headers.SkipLast(1))
+            try
             {
-                Console.Write($"Please enter value for {header}: ");
-                string line = Console.ReadLine();
-                result.Add(line);
+                List<string> result = new List<string>();
+                string[] headers = _dataTrain[0].GetHeaders();
+
+                foreach (string header in headers.SkipLast(1))
+                {
+                    Console.Write($"Please enter value for {header}: ");
+                    string line = Console.ReadLine();
+                    result.Add(line);
+                }
+                DataRecord drLine = new DataRecord(headers, result);
+
+                string newLabel = _classifier.Predict(_naiveBayesModel, drLine);
+
+                for (int i = 0; i < result.Count - 1; i++)
+                {
+                    Console.WriteLine($"{headers[i]} : {result[i]}");
+                }
+                Console.WriteLine($"Prediction : {newLabel}");
+
             }
-            DataRecord drLine = new DataRecord(headers, result);
-
-            string newLabel = _classifier.Predict(_naiveBayesModel, drLine);
-
-            for (int i = 0; i < result.Count -1; i++)
+            catch (IndexOutOfRangeException ex)
             {
-                Console.WriteLine($"{headers[i]} : {result[i]}");
+                Console.WriteLine($"Error : {ex.Message}");
+               
             }
-            Console.WriteLine($"Prediction : {newLabel}");
-
-
         }
 
         public void Run(string inputPath , string outPath)
         {
-            List<string> result = new List<string>();
-            List<IDataRecords> data = _reader.Readfile(inputPath);
-            string[] headers = data[0].GetHeaders();
-            string headerStr = string.Join(", ", headers);
-            result.Add(headerStr);
-            foreach (DataRecord line in data)
+            try
             {
-                string newLabel = _classifier.Predict(_naiveBayesModel,line);
+                List<string> result = new List<string>();
+                List<IDataRecords> data = _reader.Readfile(inputPath);
+                string[] headers = data[0].GetHeaders();
+                string headerStr = string.Join(", ", headers);
+                result.Add(headerStr);
+                foreach (DataRecord line in data)
+                {
+                    string newLabel = _classifier.Predict(_naiveBayesModel, line);
 
-                Console.WriteLine($"{line.ToString()}-> {newLabel}");
+                    Console.WriteLine($"{line.ToString()}-> {newLabel}");
 
-                result.Add(line.ToString() + $",{newLabel}");
+                    result.Add(line.ToString() + $",{newLabel}");
+                }
+
+                _writer.Write(outPath, result);
             }
-
-            _writer.Write(outPath, result);
+            catch (IndexOutOfRangeException ex)
+            {
+                Console.WriteLine($"Error : {ex.Message}");
+            }
 
 
         }
