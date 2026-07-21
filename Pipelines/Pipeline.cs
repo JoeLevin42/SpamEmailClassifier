@@ -24,8 +24,8 @@ namespace SpamEmailClassifier.Pipelines
             _writer = writer;
             _trainer = trainer;
             _classifier = classifier;
-            List<IDataRecords> a = _reader.Readfile(trainPath);
-            _naiveBayesModel = _trainer.Train(a, a[0].GetLabelName());
+            List<IDataRecords> dataTrain = _reader.Readfile(trainPath);
+            _naiveBayesModel = _trainer.Train(dataTrain, dataTrain[0].GetLabelName());
         }
 
         public void Run(string line)
@@ -35,8 +35,9 @@ namespace SpamEmailClassifier.Pipelines
 
         public void Run(string inputPath , string outPath)
         {
-            // - csv reader
-            // - 
+            List<IDataRecords> data = _reader.Readfile(inputPath);
+
+
         }
 
     }

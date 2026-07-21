@@ -44,6 +44,6 @@ class DataRecord : IDataRecords
 
     public override string ToString()
     {
-        return $"lable: {Label} | data: {string.Join(", ", LineData.Values)}";
+        return $"{string.Join(", ", LineData.Values)}";
     }
 }
