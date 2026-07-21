@@ -24,7 +24,7 @@ namespace SpamEmailClassifier.Pipelines
             _writer = writer;
             _trainer = trainer;
             _classifier = classifier;
-            List<IDataRecords> _dataTrain = _reader.Readfile(trainPath);
+            _dataTrain = _reader.Readfile(trainPath);
             _naiveBayesModel = _trainer.Train(_dataTrain, _dataTrain[0].GetLabelName());
         }
 
@@ -35,7 +35,7 @@ namespace SpamEmailClassifier.Pipelines
 
             foreach (string header in headers.SkipLast(1))
             {
-                Console.Write($"Please enter value for {header}");
+                Console.Write($"Please enter value for {header}: ");
                 string line = Console.ReadLine();
                 result.Add(line);
             }
@@ -59,7 +59,7 @@ namespace SpamEmailClassifier.Pipelines
             string[] headers = data[0].GetHeaders();
             string headerStr = string.Join(", ", headers);
             result.Add(headerStr);
-            foreach (DataRecord line in data.Skip(1))
+            foreach (DataRecord line in data)
             {
                 string newLabel = _classifier.Predict(_naiveBayesModel,line);
 

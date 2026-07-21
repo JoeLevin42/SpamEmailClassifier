@@ -15,16 +15,13 @@ class Program
         string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
 
         //currect path to train
+        string outFolder = "DataFiles";
+        string MiddleFolder = "InputFiles";
+        string InnerFolder = "TrainInput";
         string fileNameTrain = args[0];
-        string trainPath = Path.Combine(baseDirectory, fileNameTrain);
+        string trainPath = Path.Combine(baseDirectory,outFolder, MiddleFolder, InnerFolder, fileNameTrain);
 
         //currect path to test
-        string fileNameTest = args[1];
-        string testPath = Path.Combine(baseDirectory, fileNameTest);
-
-        string folderName = "output";
-        string fileNameTestOut = "predictions.csv";
-        string outPath = Path.Combine(baseDirectory, fileNameTest);
 
         Pipeline pip = new Pipeline(reader, writer, modeltrainer, classifier, trainPath);
         
@@ -34,6 +31,14 @@ class Program
         }
         else if(args.Length == 2)
         {
+            string fileNameTest = args[1];
+            string innerfolder = "TestInput";
+            string testPath = Path.Combine(baseDirectory, outFolder, MiddleFolder, innerfolder, fileNameTest);
+
+            string folderName = "output";
+            string fileNameTestOut = "predictions.csv";
+            string outPath = Path.Combine(baseDirectory, folderName, fileNameTestOut);
+
             pip.Run(testPath, outPath);
         }
 
