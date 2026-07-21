@@ -1,4 +1,4 @@
-﻿using SpamEmailClassifier.DataIo;
+using SpamEmailClassifier.DataIo;
 using SpamEmailClassifier.Datarecord;
 using SpamEmailClassifier.Models;
 using SpamEmailClassifier.Pipelines;
@@ -30,11 +30,11 @@ class Program
         
         if (args.Length == 1)
         {
-            pip.Run()
+            pip.Run();
         }
         else if(args.Length == 2)
         {
-            pip.Run(testPath, outPath)
+            pip.Run(testPath, outPath);
         }
 
     }

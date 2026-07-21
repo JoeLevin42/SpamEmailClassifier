@@ -91,12 +91,13 @@ with the additional label (e.g = isSpam?)
 
 ## Team Work Division:
 	CSVLoader - Yoni
+	CSVWriter - Yoel
 	Program - Yoni
 	DataRecord - Yoni
 	NaiveBayesModel -- Yoel
 	ModelTrainer -- Yoel
 	Classifier -- Yoni
-	InteractiveModeRunner -- Yoni
+	InteractiveModeRunner -- Yoel
 	BatchRunner -- Yoel
 
 =============================
