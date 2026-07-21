@@ -2,7 +2,7 @@ namespace SpamEmailClassifier.DataIo;
 
 using SpamEmailClassifier.Datarecord;
 
-interface IDataWriter
+public interface IDataWriter
 {
-    public List<IDataRecords> Write(string path , List<string> lines);
+    public void Write(string path , List<string> lines);
 }

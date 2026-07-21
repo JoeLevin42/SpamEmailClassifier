@@ -2,9 +2,9 @@ namespace SpamEmailClassifier.DataIo;
 using SpamEmailClassifier.Datarecord;
 using System.Data;
 
-class CSVReader : IReadData
+public class CSVReader : IReadData
 {
-    public List<IDataRecords> Read(string path)
+    public List<IDataRecords> Readfile(string path)
     {
         string[] lines = File.ReadAllLines(path);
         List<IDataRecords> parsedData = ParsedData(lines);

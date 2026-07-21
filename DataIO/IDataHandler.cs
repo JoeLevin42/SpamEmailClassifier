@@ -1,7 +1,7 @@
 namespace SpamEmailClassifier.DataIo;
 using SpamEmailClassifier.Datarecord;
 
-interface IReadData
+public interface IReadData
 {
-    public List<IDataRecords> Read(string path);
+    public List<IDataRecords> Readfile(string path);
 }

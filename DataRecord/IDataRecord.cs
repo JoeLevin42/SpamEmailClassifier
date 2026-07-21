@@ -1,8 +1,9 @@
-﻿namespace SpamEmailClassifier.Datarecord;
+namespace SpamEmailClassifier.Datarecord;
 
 public interface IDataRecords
 {
-    string GetLabel();
+    public string? GetLabel();
 
+    public string? GetLabelName();
     Dictionary<string, string> GetFeatures();
 }

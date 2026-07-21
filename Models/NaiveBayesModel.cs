@@ -2,7 +2,7 @@
 
 namespace SpamEmailClassifier.Models
 {
-    class NaiveBayesModel
+    public class NaiveBayesModel
     {
         public List<string> Labels { get; set; }
         public Dictionary<string, double> Priors { get; set; }

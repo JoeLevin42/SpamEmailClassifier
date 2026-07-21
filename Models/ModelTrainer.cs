@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace SpamEmailClassifier.Models
 {
-    class ModelTrainer
+    public class ModelTrainer
     {
         public NaiveBayesModel Train(List<IDataRecords> rows, string targetColumn)
         {

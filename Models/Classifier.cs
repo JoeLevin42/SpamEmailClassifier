@@ -6,7 +6,7 @@ using SpamEmailClassifier.Datarecord;
 
 namespace SpamEmailClassifier.Models
 {
-    class Classifier
+    public class Classifier
     {
         public string Predict(NaiveBayesModel model, DataRecord sample)
         {
