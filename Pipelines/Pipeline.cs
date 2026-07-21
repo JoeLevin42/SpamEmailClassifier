@@ -12,7 +12,7 @@ namespace SpamEmailClassifier.Pipelines
         private ModelTrainer _trainer;
         private Classifier _classifier;
         private NaiveBayesModel _naiveBayesModel;
-
+        private List<IDataRecords> _dataTrain;
         public Pipeline(
             IReadData reader,
             IDataWriter writer,
@@ -24,18 +24,51 @@ namespace SpamEmailClassifier.Pipelines
             _writer = writer;
             _trainer = trainer;
             _classifier = classifier;
-            List<IDataRecords> dataTrain = _reader.Readfile(trainPath);
-            _naiveBayesModel = _trainer.Train(dataTrain, dataTrain[0].GetLabelName());
+            List<IDataRecords> _dataTrain = _reader.Readfile(trainPath);
+            _naiveBayesModel = _trainer.Train(_dataTrain, _dataTrain[0].GetLabelName());
         }
 
-        public void Run(string line)
+        public void Run()
         {
-            
+            List<string> result = new List<string>();
+            string[] headers = _dataTrain[0].GetHeaders();
+
+            foreach (string header in headers.SkipLast(1))
+            {
+                Console.Write($"Please enter value for {header}");
+                string line = Console.ReadLine();
+                result.Add(line);
+            }
+            DataRecord drLine = new DataRecord(headers, result);
+
+            string newLabel = _classifier.Predict(_naiveBayesModel, drLine);
+
+            for (int i = 0; i < result.Count -1; i++)
+            {
+                Console.WriteLine($"{headers[i]} : {result[i]}");
+            }
+            Console.WriteLine($"Prediction : {newLabel}");
+
+
         }
 
         public void Run(string inputPath , string outPath)
         {
+            List<string> result = new List<string>();
             List<IDataRecords> data = _reader.Readfile(inputPath);
+            string[] headers = data[0].GetHeaders();
+            string headerStr = string.Join(", ", headers);
+            result.Add(headerStr);
+            foreach (DataRecord line in data.Skip(1))
+            {
+                string newLabel = _classifier.Predict(_naiveBayesModel,line);
+
+                Console.WriteLine($"{line.ToString()}-> {newLabel}");
+
+                result.Add(line.ToString() + $",{newLabel}");
+            }
+
+            _writer.Write(outPath, result);
 
 
         }

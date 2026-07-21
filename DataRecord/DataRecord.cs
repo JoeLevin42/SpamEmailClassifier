@@ -1,14 +1,16 @@
 namespace SpamEmailClassifier.Datarecord;
 
-class DataRecord : IDataRecords
+public class DataRecord : IDataRecords
 {
     public string? Label { get; set; }
 
     public string? LabelName { get; set; }
+    public string[] Headers { get; set; }
     public Dictionary<string, string> LineData { get; set; }
 
     public DataRecord(string[] headers, string[] line)
     {
+        Headers = headers;
         LabelName = headers[^1];
         Label = line[^1];
         LineData = new Dictionary<string, string>();
@@ -18,7 +20,7 @@ class DataRecord : IDataRecords
         }
     }
 
-    public DataRecord(string[] headers, string[] line, bool test)
+    public DataRecord(string[] headers, List<string> line)
     {
         LineData = new Dictionary<string, string>();
         for (int i = 0; i < headers.Length; i++)
@@ -26,7 +28,10 @@ class DataRecord : IDataRecords
             LineData[headers[i]] = line[i]; 
         }
     }
-
+    public string[] GetHeaders()
+    {
+        return Headers;
+    }
     public string? GetLabel()
     {
         return Label;
