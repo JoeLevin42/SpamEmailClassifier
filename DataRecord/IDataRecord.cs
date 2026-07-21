@@ -5,5 +5,7 @@ public interface IDataRecords
     public string? GetLabel();
 
     public string? GetLabelName();
-    Dictionary<string, string> GetFeatures();
+    public Dictionary<string, string> GetFeatures();
+    public string[] GetHeaders();
+    
 }
