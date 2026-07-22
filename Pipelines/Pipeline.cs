@@ -39,6 +39,7 @@ namespace SpamEmailClassifier.Pipelines
                 {
                     Console.Write($"Please enter value for {header}: ");
                     string line = Console.ReadLine();
+                    if (line.Length == 0) Environment.Exit(1);
                     result.Add(line);
                 }
                 DataRecord drLine = new DataRecord(headers, result);
@@ -66,13 +67,13 @@ namespace SpamEmailClassifier.Pipelines
                 List<string> result = new List<string>();
                 List<IDataRecords> data = _reader.Readfile(inputPath);
                 string[] headers = data[0].GetHeaders();
-                string headerStr = string.Join(", ", headers);
+                string headerStr = string.Join(",", headers);
                 result.Add(headerStr);
                 foreach (DataRecord line in data)
                 {
                     string newLabel = _classifier.Predict(_naiveBayesModel, line);
 
-                    Console.WriteLine($"{line.ToString()}-> {newLabel}");
+                    Console.WriteLine($"{line.ToString()},{newLabel}");
 
                     result.Add(line.ToString() + $",{newLabel}");
                 }
