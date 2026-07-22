@@ -39,6 +39,7 @@ namespace SpamEmailClassifier.Pipelines
                 {
                     Console.Write($"Please enter value for {header}: ");
                     string line = Console.ReadLine();
+                    if (line.Length == 0) Environment.Exit(1);
                     result.Add(line);
                 }
                 DataRecord drLine = new DataRecord(headers, result);

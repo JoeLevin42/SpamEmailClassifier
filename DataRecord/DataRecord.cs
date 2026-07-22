@@ -23,6 +23,7 @@ public class DataRecord : IDataRecords
     public DataRecord(string[] headers, List<string> line)
     {
         LineData = new Dictionary<string, string>();
+
         for (int i = 0; i < headers.Length-1; i++)
         {
             LineData[headers[i]] = line[i]; 
