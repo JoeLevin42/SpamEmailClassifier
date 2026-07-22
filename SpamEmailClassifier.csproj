@@ -20,6 +20,12 @@
     <None Update="DataFiles\InputFiles\TestInput\Loan_Approval_Requires_Laplace_Test.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="DataFiles\InputFiles\TestInput\mushroom.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="DataFiles\InputFiles\TestInput\mushrooms.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="DataFiles\InputFiles\TestInput\Play_Tennis_Test.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -33,6 +39,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="DataFiles\InputFiles\TrainInput\Loan_Approval_Requires_Laplace_Train.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="DataFiles\InputFiles\TrainInput\mushrooms.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="DataFiles\InputFiles\TrainInput\Play_Tennis_Train.csv">
